@@ -7,7 +7,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ff5f8a, #ff9a9e);
+      background: linear-gradient(135deg, #ff8fab, #ffc2d1);
       overflow: hidden;
       font-family: 'Georgia', serif;
       display: flex;
@@ -17,7 +17,7 @@
     }
 
     .letter {
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.2);
       padding: 40px;
       border-radius: 25px;
       max-width: 540px;
@@ -28,7 +28,7 @@
     }
 
     h1 {
-      font-size: 2.4em;
+      font-size: 2.3em;
       margin-bottom: 15px;
     }
 
@@ -42,7 +42,7 @@
     }
 
     button {
-      background: #ff3366;
+      background: #ff4d6d;
       border: none;
       padding: 12px 26px;
       color: white;
@@ -53,7 +53,7 @@
     }
 
     button:hover {
-      background: #ff003c;
+      background: #ff1f4b;
     }
 
     #noBtn {
@@ -91,31 +91,38 @@
         opacity: 0;
       }
     }
+
+    /* Hide YouTube player */
+    iframe {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Romantic music -->
-  <audio id="music" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-  </audio>
+  <!-- YouTube music (Tumi Shei Purnota Amar) -->
+  <iframe id="ytmusic"
+    src="https://www.youtube.com/embed/1k8m0XxJpN4?enablejsapi=1&autoplay=1&mute=1"
+    allow="autoplay">
+  </iframe>
 
   <div class="letter">
-    <h1>My Dearest Emon ❤️</h1>
+    <h1>My Dear Emon ❤️</h1>
 
     <p>
-      Koi filmy kahani hoti agar,<br>
-      toh tum uska hero hote…<br>
-      aur main — bas wahi jo tumhe har scene mein chunti 😌❤️<br><br>
+      This page is simple,<br>
+      just like the way I feel about you.<br><br>
 
-      This isn’t just a Valentine page,<br>
-      it’s my feelings wrapped in code,<br>
-      written softly, just for you.
+      You make ordinary days feel lighter,<br>
+      and quiet moments feel safe.<br><br>
+
+      Loving you doesn’t feel loud or dramatic —<br>
+      it just feels right.
     </p>
 
-    <p><b>So tell me…</b></p>
+    <p style="margin-top:15px;"><b>So tell me…</b></p>
 
-    <p style="font-size:1.3em;">Will you be my Valentine? 💌</p>
+    <p style="font-size:1.3em;">Will you be my Valentine? 🤍</p>
 
     <div class="buttons">
       <button onclick="yesClicked()">YES ❤️</button>
@@ -123,19 +130,22 @@
     </div>
 
     <div id="yesMessage" class="hidden">
-      I knew it 😌💘  
-      You & Me — filmy forever ❤️
+      Thank you for choosing me —  
+      I’ll keep choosing you too 🤍
     </div>
 
     <div class="signature">
-      — Yours, <b>Mental Problem</b> 💕
+      — Yours, <b>Mental Problem</b> 🫶
     </div>
   </div>
 
   <script>
     function yesClicked() {
       document.getElementById("yesMessage").style.display = "block";
-      document.getElementById("music").play();
+
+      // unmute YouTube audio after interaction
+      const iframe = document.getElementById("ytmusic");
+      iframe.src = "https://www.youtube.com/embed/1k8m0XxJpN4?enablejsapi=1&autoplay=1";
     }
 
     function moveNo() {
