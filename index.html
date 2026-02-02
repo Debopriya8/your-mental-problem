@@ -37,10 +37,6 @@
       line-height: 1.7;
     }
 
-    .buttons {
-      margin-top: 25px;
-    }
-
     button {
       background: #ff4d6d;
       border: none;
@@ -73,7 +69,6 @@
       font-size: 1.05em;
     }
 
-    /* Floating hearts */
     .heart {
       position: absolute;
       color: rgba(255,255,255,0.85);
@@ -92,7 +87,6 @@
       }
     }
 
-    /* Hide YouTube player */
     iframe {
       display: none;
     }
@@ -100,9 +94,9 @@
 </head>
 <body>
 
-  <!-- YouTube music (Tumi Shei Purnota Amar) -->
+  <!-- YouTube embed -->
   <iframe id="ytmusic"
-    src="https://www.youtube.com/embed/1k8m0XxJpN4?enablejsapi=1&autoplay=1&mute=1"
+    src="https://www.youtube.com/embed/1k8m0XxJpN4?enablejsapi=1"
     allow="autoplay">
   </iframe>
 
@@ -116,18 +110,17 @@
       You make ordinary days feel lighter,<br>
       and quiet moments feel safe.<br><br>
 
-      Loving you doesn’t feel loud or dramatic —<br>
-      it just feels right.
+      Loving you doesn’t feel loud —<br>
+      it just feels true.
     </p>
 
-    <p style="margin-top:15px;"><b>So tell me…</b></p>
+    <button onclick="playSong()">▶️ Play our song</button>
 
+    <p style="margin-top:15px;"><b>So tell me…</b></p>
     <p style="font-size:1.3em;">Will you be my Valentine? 🤍</p>
 
-    <div class="buttons">
-      <button onclick="yesClicked()">YES ❤️</button>
-      <button id="noBtn" onmouseover="moveNo()">NO 😜</button>
-    </div>
+    <button onclick="yesClicked()">YES ❤️</button>
+    <button id="noBtn" onmouseover="moveNo()">NO 😜</button>
 
     <div id="yesMessage" class="hidden">
       Thank you for choosing me —  
@@ -140,12 +133,14 @@
   </div>
 
   <script>
+    function playSong() {
+      const iframe = document.getElementById("ytmusic");
+      iframe.src =
+        "https://www.youtube.com/embed/1k8m0XxJpN4?autoplay=1";
+    }
+
     function yesClicked() {
       document.getElementById("yesMessage").style.display = "block";
-
-      // unmute YouTube audio after interaction
-      const iframe = document.getElementById("ytmusic");
-      iframe.src = "https://www.youtube.com/embed/1k8m0XxJpN4?enablejsapi=1&autoplay=1";
     }
 
     function moveNo() {
@@ -155,7 +150,6 @@
       btn.style.transform = `translate(${x}px, ${y}px)`;
     }
 
-    // Floating hearts
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -163,7 +157,6 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = Math.random() * 22 + 16 + "px";
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 6000);
     }, 300);
   </script>
